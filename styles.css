@@ -1,0 +1,136 @@
+:root {
+    --text-color: #636363;
+    --button-shadow-color: #605656;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+        segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto, arial,
+        sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+}
+
+.header {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-weight: bold;
+    gap: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    width: 3rem;
+}
+
+.logo-text {
+    display: inline;
+    font-size: 2rem;
+}
+
+main {
+    /* background-color: #e2e8f0; */
+    padding: 1.5rem;
+    box-shadow: 0px 1px 1px #e2e8f0, 0px -1px 1px #e2e8f0;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasks {
+    width: 500px;
+    min-height: 600px;
+
+    border: 1px solid black;
+}
+
+.row {
+    padding: 0.5rem 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.row:hover {
+    background-color: #f8f9fa;
+}
+
+.row-start {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.row-end {
+    text-align: right;
+}
+
+.game {
+    width: 500px;
+    margin: 3rem;
+    margin-top: 2rem;
+    border: 1px solid #000;
+
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.cell {
+    font-size: 6rem;
+    font-weight: bold;
+    border: 1px solid #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    text-align: center;
+    opacity: 0.8;
+    margin: 1rem;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.hidden {
+    display: none;
+}
+
+.icon {
+    width: 1.5rem;
+}
+
+span,
+.cell,
+.icon,
+.btn,
+.resetBtn {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+}

@@ -224,7 +224,41 @@ const tasksBackend = (() => {
     return { projects };
 })();
 
-const DOM = (() => {})();
+const DOM = (() => {
+    const init = () => {
+        const circleCompleteBtn = document.querySelectorAll(".row-start img");
+        circleCompleteBtn.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                console.log(e.target.src);
+                e.target.src = e.target.src.includes("icons/circle-outline.svg")
+                    ? "icons/check.svg"
+                    : "icons/circle-outline.svg";
+            });
+
+            btn.addEventListener("mouseenter", (e) => {
+                e.stopPropagation();
+                e.target.src = "icons/check.svg";
+            });
+
+            btn.addEventListener("mouseleave", (e) => {
+                e.stopPropagation();
+                e.target.src = "icons/circle-outline.svg";
+            });
+        });
+
+        const favBtn = document.querySelectorAll(".row-end img");
+        favBtn.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.target.src = e.target.src.includes("icons/star-outline.svg")
+                    ? "icons/star-fill.svg"
+                    : "icons/star-outline.svg";
+            });
+        });
+    };
+
+    init();
+})();
 
 // console.table(tasksBackend.projects["default"]["tasks"]);
 // console.table(tasksBackend.projects["college"]["tasks"]);
