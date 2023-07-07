@@ -1,21 +1,49 @@
 // const createNewTask = (title, dueDate, priority, notes, tags) => {
 SAMPLE_TASKS_DEFAULT = [
-    ["apply for interview", "1686470158", "2", "mention Patrick's day", []],
-    ["wash car", "1686271376", "1", "", []],
-    ["finish the custard in fridge", "1686271376", "2", "", []],
-    ["file tax returns", "1686271376", "1", "", []],
-    ["get groceries", "", "1", "chilli, tomato, beetroot", []],
-    ["go to gym", "", "0", "", []],
-    ["cook that steak", "", "1", "", []],
-    ["read cracking coding interview", "", "0", "don't forget the preface", []],
+    [
+        "apply for interview",
+        "1686470158",
+        "2",
+        false,
+        "mention Patrick's day",
+        [],
+    ],
+    ["wash car", "1686271376", "1", false, null, []],
+    ["finish the custard in fridge", "1686271376", "2", true, null, []],
+    ["file tax returns", "1686271376", "1", false, null, []],
+    ["get groceries", null, "1", false, "chilli, tomato, beetroot", []],
+    ["go to gym", null, "0", false, null, []],
+    ["cook that steak", null, "1", true, null, []],
+    [
+        "read cracking coding interview",
+        null,
+        "0",
+        false,
+        "don't forget the preface",
+        [],
+    ],
     // ["", "", "2", "", []],
 ];
 SAMPLE_TASKS_COLLEGE = [
-    ["finish math assignment", "1686026847", "1", "", []],
-    ["email Vivian", "", "1", "science project: ask about the ppts", []],
-    ["study for Friday!", "1687993415", "2", "", []],
-    ["return library books", "", "0", "they are in cupboard", []],
-    ["get a suit for prom", "1686216124", "2", "also get shoes and tie", []],
+    ["finish math assignment", "1686026847", "1", false, null, []],
+    [
+        "email Vivian",
+        null,
+        "1",
+        false,
+        "science project: ask about the ppts",
+        [],
+    ],
+    ["study for Friday!", "1687993415", "2", true, null, []],
+    ["return library books", null, "0", false, "they are in cupboard", []],
+    [
+        "get a suit for prom",
+        "1686216124",
+        "2",
+        true,
+        "also get shoes and tie",
+        [],
+    ],
     // ["", "", "2", "", []],
 ];
 
@@ -85,24 +113,32 @@ const tasksBackend = (() => {
         return project;
     };
 
-    const createNewTask = (title, dueDate, priority, notes, tags) => {
+    const createNewTask = (
+        title,
+        dueDate,
+        priority,
+        favourite,
+        notes,
+        tags
+    ) => {
         function Task() {
             this.id = null;
             this.title = null;
             this.completed = false;
             this.dueDate = null;
             this.priority = "1";
+            this.favourite = null;
             this.notes = null;
             this.tags = [];
 
-            this.isCompleted = () => {
-                this.completed = true;
-                return true;
+            this.completed = () => {
+                this.completed ? false : true;
+                return this.completed;
             };
 
-            this.isNotCompleted = () => {
-                this.completed = false;
-                return true;
+            this.favourite = () => {
+                this.favourite ? false : true;
+                return this.favourite;
             };
 
             this.setProperty = (property, value) => {
@@ -145,6 +181,7 @@ const tasksBackend = (() => {
 
         if (dueDate !== undefined) task.setProperty("dueDate", dueDate);
         if (priority !== undefined) task.setProperty("priority", priority);
+        if (favourite !== undefined) task.setProperty("favourite", favourite);
         if (notes !== undefined) task.setProperty("notes", notes);
         if (tags !== undefined) task.setProperty("tags", tags);
         // if ( !== undefined) task.setProperty("",)
